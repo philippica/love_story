@@ -1,0 +1,94 @@
+#include<cstdio>
+#include<iostream>
+using namespace std;
+
+int days(int k)
+{
+	int number;
+	switch(k)
+	{
+		case 1:
+		case 3:
+		case 5:
+		case 7:
+		case 8:
+		case 10:
+		case 12:
+			number=31;
+			break;
+		case 4:
+		case 6:
+		case 9:
+		case 11:
+			number=30;
+			break;
+		default:
+			number=28;	
+			break;	
+	}
+	return number;
+}
+
+void heart()
+{
+	int i,j;
+	for(i=1;i<=3;i++)
+	{
+		for(j=1;j<=3-i;j++)cout<<"  ";
+		cout<<"&&";
+		for(j=1;j<=2*i-2;j++)cout<<"  ";
+		cout<<"&&";
+		for(j=1;j<=6-2*i;j++)cout<<"  ";
+		cout<<"&&";
+		for(j=1;j<=2*i-2;j++)cout<<"  ";
+		cout<<"&&";
+		cout<<endl;
+	}
+	for(i=1;i<=6;i++)
+	{
+		for(j=1;j<=i-1;j++)cout<<"  ";
+		cout<<"&&";
+		for(j=1;j<=12-2*i;j++)cout<<"  ";
+		cout<<"&&";
+		cout<<endl;
+	}
+}
+
+int main()
+{
+	int year,month,date;
+	cout<<endl<<"###################################"<<endl<<endl;
+	cout<<"  Input the present year:";
+	cin>>year;
+	cout<<endl;
+	cout<<"  Input the present month:";
+	cin>>month;
+	cout<<endl;
+	cout<<"  Input the present date:";
+	cin>>date;
+	cout<<endl;
+	cout<<"###################################"<<endl<<endl;
+	year=year-2013;
+	int i,j,met=0;
+	for(i=0;i<year;i++)
+	{
+		if((i+2013)%4==0 && (i+2013)%100!=0 || (i+2013)%400==0)met+=366;
+		else met+=365;
+	} 
+	for(i=1;i<=month;i++)met+=days(i);
+	if(((year+2013)%4==0 && (year+2013)%100!=0 || (year+2013)%400==0) && month>2)met++;
+	met+=date;
+	met-=239;
+	cout<<"  Babe, till today, we have met for "<<met<<" days."<<endl<<endl;
+	int fallInLove;
+	fallInLove=met-618;
+	cout<<"  "<<fallInLove<<" days ago, you first announced your love for me."<<endl<<endl;
+	cout<<"###################################"<<endl<<endl;
+	cout<<"  I may not be as smart as others, not even close."<<endl<<endl;
+	cout<<"  But I am the one that loves you most desperately."<<endl<<endl;
+	cout<<"  I am the one who stands half-step behind you, no matter what it takes."<<endl<<endl;
+	cout<<"  Babe, I love you."<<endl<<endl;
+	cout<<"###################################"<<endl<<endl;
+	heart();
+	return 0;
+}
